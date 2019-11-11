@@ -1,19 +1,20 @@
-<form>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
   <p class="font-weight-bold">Add user</p>
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
   </div>
 
   <div class="form-group">
     <label for="name">First Name</label>
-    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="First Name">
+    <input type="text" class="form-control" id="name" formControlName="first_name" placeholder="First Name">
   </div>
 
   <div class="form-group">
     <label for="lastname">Last Name</label>
-    <input type="text" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Last Name">
+    <input type="text" class="form-control" id="lastname" formControlName="last_name" placeholder="Last Name">
   </div>
 
   <button type="submit" class="btn btn-primary float-right">Add</button>
+  <button class="btn btn-secondary float-right mr-2" type="reset" (click)="onReset()" data-dismiss="modal">Cancel</button>
 </form>
