@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { HomeService } from './service/home.service';
 
 @NgModule({
   declarations: [HomeComponent, UserListComponent, UserFormComponent],
@@ -13,7 +14,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     CommonModule,
     HomeRoutingModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [ HomeService ],
 })
 export class HomeModule { }
 
