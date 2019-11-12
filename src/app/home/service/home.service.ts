@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,23 @@ import { HttpClient } from '@angular/common/http';
 export class HomeService {
   private customerApiUrl = 'customers';
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'https://reqres.in/api/users?page=1';
+  listUrl: string = 'http://dummy.restapiexample.com/api/v1/employees';
 
+  // get user details
   getUsersData() {
-    return this.http.get(this.baseUrl);
+    return this.http.get(this.listUrl);
+  }
+
+  deleteUserData(id): Observable<any> {
+    console.log('sdklsd', id);
+    const url = `${this.listUrl}${id}`;
+    return this.http.delete(url).pipe(map(response => {
+      return response;
+    }))
+  }
+
+  createUser(user): Observable<any> {
+    return this.http.post(this.listUrl, user);
   }
 
 

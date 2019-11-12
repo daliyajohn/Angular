@@ -3,12 +3,12 @@
 		<div class="container">
 				<app-user-list></app-user-list>
 		</div>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal"><span>+</span></button>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal" (click)="addUserData()"><span>+</span></button>
 	</section>
 </main>
 
 <!-- user add form modal start -->
-<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true" *ngIf="addUser">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
