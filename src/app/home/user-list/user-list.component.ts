@@ -9,6 +9,12 @@ import { HomeService } from '../service/home.service';
 })
 export class UserListComponent implements OnInit {
   usersData: any;
+  userDetails: any;
+  editUser: boolean;
+
+
+  users:any;
+
   constructor( private router: Router, private homeService: HomeService) { }
 
   ngOnInit() {
@@ -17,5 +23,29 @@ export class UserListComponent implements OnInit {
       this.usersData = data;
       console.log('>>>>>>>><<<<<<<<<<<<', this.usersData);
     });
+  }
+
+  editUserData(UserId) {
+    this.userDetails = UserId;
+    this.editUser = true;
+    // console.log('>>>>>>>><<<<<<<<<<<<dcasd', this.userDetails);
+  }
+
+  // delete data
+  deleteData(data) {
+    console.log('delete data', data.id);
+   
+    this.homeService.deleteUserData(data.id)
+    .subscribe( data => {
+      this.users = data;
+      console.log('delete data sdcfsdfsdf', this.users);
+    })
+
+
+
+    
+
+
+
   }
 }
