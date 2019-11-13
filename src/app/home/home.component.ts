@@ -15,4 +15,8 @@ export class HomeComponent implements OnInit {
     this.addUser = true;
   }
 
+  closeModal(){
+    this.addUser = false;
+  }
+
 }
