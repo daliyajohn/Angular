@@ -17,7 +17,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<app-user-form></app-user-form>
+				<app-user-form (cancelForm)="closeModal($event)"></app-user-form>
 			</div>
 		</div>
 	</div>

@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   }
 
   closeModal(){
+    document.querySelector('.modal-backdrop').classList.toggle('show');
+    document.querySelector('.modal-backdrop').classList.toggle('d-none');
     this.addUser = false;
   }
 

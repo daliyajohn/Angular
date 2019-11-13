@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from '../service/home.service';
 import { first } from 'rxjs/operators';
@@ -12,6 +12,7 @@ export class UserFormComponent implements OnInit {
   @Input() userEditData;
   userForm: FormGroup;
   submitted = false;
+  @Output() cancelForm: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) { 
   }
@@ -23,12 +24,13 @@ export class UserFormComponent implements OnInit {
       age: ['', Validators.required]
     });
   }
-  
+
   // submit data
   onSubmit(userData) {
     this.submitted = true;
     if (this.userForm.valid) {
       this.homeService.createUser(userData).subscribe(data => {
+        this.cancelForm.emit(false);
         if(data.status === 200) {
           var x = document.getElementById("snackbar");
           x.innerHTML = 'Add user successfully!'

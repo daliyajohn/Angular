@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { HomeService } from '../service/home.service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-user-list',
@@ -33,7 +34,6 @@ export class UserListComponent implements OnInit {
   editUserData(UserId) {
     this.userDetails = UserId;
     this.editUser = true;
-    // console.log('>>>>>>>><<<<<<<<<<<<dcasd', this.userDetails);
   }
 
   // delete user data
@@ -50,6 +50,8 @@ export class UserListComponent implements OnInit {
   }
 
   closeModal() {
+    document.querySelector('.modal-backdrop').classList.toggle('show');
+    document.querySelector('.modal-backdrop').classList.toggle('d-none');
     this.editUser = false;
   }
 }
