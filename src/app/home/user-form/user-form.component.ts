@@ -16,40 +16,29 @@ export class UserFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) { 
   }
 
-  ngOnInit() {
-    console.log('jdsbsjcfjscfbks;jdbcfn', this.userEditData);
-    
-
+  ngOnInit() { 
     this.userForm = this.formBuilder.group({
-      employee_name: ['', Validators.required],
-      employee_salary: ['', Validators.required],
-      employee_age: ['', Validators.required]
+      name: ['', Validators.required],
+      salary: ['', Validators.required],
+      age: ['', Validators.required]
     });
   }
+  
   // submit data
   onSubmit(userData) {
     this.submitted = true;
-    // if (this.userForm.invalid) {
-    //    this.homeService.createUser(userData)
-    // }
-console.log(this.userForm)
-
-// const values = {
-//   'data': this.userForm.value,
-// };
-
-console.log('dlmsdkcfmsl;dcfsdl;cf', userData);
     if (this.userForm.valid) {
       this.homeService.createUser(userData).subscribe(data => {
-          if(data.status === 200) {
-            alert('User updated successfully.');
-          }else {
-            alert(data.message);
-          }
-        },
-        error => {
-          alert(error);
-        });
+        if(data.status === 200) {
+          var x = document.getElementById("snackbar");
+          x.innerHTML = 'Add user successfully!'
+          x.className = "show";
+          setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+      },
+      error => {
+        alert(error);
+      });
     }
   }
 

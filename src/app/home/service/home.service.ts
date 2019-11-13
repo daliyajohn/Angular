@@ -11,12 +11,14 @@ export class HomeService {
   constructor(private http: HttpClient) { }
   listUrl: string = 'http://dummy.restapiexample.com/api/v1/employees';
   deleteUrl = 'http://dummy.restapiexample.com/api/v1/delete/';
+  createUserUrl = 'http://dummy.restapiexample.com/api/v1/create';
 
   // get user details
   getUsersData() {
     return this.http.get(this.listUrl);
   }
 
+  // delete user
   deleteUserData(id): Observable<any> {
     const url = `${this.deleteUrl}${id}`;
     return this.http.delete(url).pipe(map(response => {
@@ -24,8 +26,9 @@ export class HomeService {
     }))
   }
 
+  // create user
   createUser(user): Observable<any> {
-    return this.http.post(this.listUrl, user);
+    return this.http.post(this.createUserUrl, user);
   }
 
 
