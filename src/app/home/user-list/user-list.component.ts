@@ -13,16 +13,19 @@ export class UserListComponent implements OnInit {
   userDetails: any;
   editUser: boolean;
   users:any;
+  showLoader: boolean;
 
   constructor( private router: Router, private homeService: HomeService) { }
 
   ngOnInit() {
+    this.showLoader = true;
     this.listUserData();
   }
 
   // user data list
   listUserData() {
     this.homeService.getUsersData().subscribe( data => {
+      this.showLoader = false;
       this.usersData = data;
     });
   }
