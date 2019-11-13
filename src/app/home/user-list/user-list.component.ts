@@ -48,4 +48,8 @@ export class UserListComponent implements OnInit {
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     })
   }
+
+  closeModal() {
+    this.editUser = false;
+  }
 }
