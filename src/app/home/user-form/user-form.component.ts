@@ -13,6 +13,7 @@ export class UserFormComponent implements OnInit {
   userForm: FormGroup;
   submitted = false;
   @Output() cancelForm: EventEmitter<any> = new EventEmitter<any>();
+  @Output() loadDataEvent: EventEmitter<any> = new EventEmitter<any>();
   popupTitle: any;
   popupButton: any;
 
@@ -42,15 +43,19 @@ export class UserFormComponent implements OnInit {
   // submit data
   onSubmit(userData) {
     this.submitted = true;
-    if (this.userForm.valid && !this.userEditData.id) {
+    if (this.userForm.valid  && !userData.id) {
       this.homeService.createUser(userData).subscribe(data => {
         this.cancelForm.emit(false);
+     
         if(data.status === 200) {
           var x = document.getElementById("snackbar");
           x.innerHTML = 'Add user successfully!'
           x.className = "show";
           setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
+          console.log('ghcmhgfhj,gv')
+          this.loadDataEvent.emit(true);
+        
       },
       error => {
         alert(error);
@@ -67,6 +72,7 @@ export class UserFormComponent implements OnInit {
       this.homeService.updateUserData(dataFormat).subscribe(r => {
         this.cancelForm.emit(true);
       })
+
     }
   }
 

@@ -25,6 +25,7 @@ export class UserListComponent implements OnInit {
 
   // user data list
   listUserData() {
+   
     this.homeService.getUsersData().subscribe( data => {
       this.showLoader = false;
       this.usersData = data;
@@ -52,5 +53,11 @@ export class UserListComponent implements OnInit {
   closeModal() {
     document.querySelector('.modal-backdrop').remove();
     this.editUser = false;
+    console.log('testtttt');
+  }
+
+  loadData(e) {
+    // this.listUserData();
+    console.log('testtttt');
   }
 }

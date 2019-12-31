@@ -45,7 +45,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <app-user-form [userEditData]="userDetails" (cancelForm)="closeModal($event)"></app-user-form>
+          <app-user-form [userEditData]="userDetails" (loadDataEvent)="loadData($event)" (cancelForm)="closeModal($event)" ></app-user-form>
         </div>
       </div>
     </div>
