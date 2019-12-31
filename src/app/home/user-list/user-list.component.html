@@ -35,7 +35,7 @@
 
 <div id="snackbar" class="btn-success"></div>
 
-<!-- user add form modal start -->
+<!-- user form modal start -->
   <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true" *ngIf="editUser">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -50,4 +50,6 @@
       </div>
     </div>
   </div>
-<!-- user add form modal end -->
+<!-- user form modal end -->
+
+<button type="button" class="btn btn-primary add-button" did="close-popup"  data-toggle="modal" data-target="#userModal"  (click)="addUserData()"><span>+</span></button>

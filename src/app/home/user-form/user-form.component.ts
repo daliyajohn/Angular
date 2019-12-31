@@ -46,22 +46,18 @@ export class UserFormComponent implements OnInit {
     if (this.userForm.valid  && !userData.id) {
       this.homeService.createUser(userData).subscribe(data => {
         this.cancelForm.emit(false);
-     
+        this.loadDataEvent.emit(true);
         if(data.status === 200) {
           var x = document.getElementById("snackbar");
           x.innerHTML = 'Add user successfully!'
           x.className = "show";
           setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
-          console.log('ghcmhgfhj,gv')
-          this.loadDataEvent.emit(true);
-        
       },
       error => {
         alert(error);
       });
     }  
-    
     if(this.userEditData && this.userEditData.id) {
       const dataFormat = {
         'name': userData.name,
@@ -71,8 +67,8 @@ export class UserFormComponent implements OnInit {
       }    
       this.homeService.updateUserData(dataFormat).subscribe(r => {
         this.cancelForm.emit(true);
+        this.loadDataEvent.emit(true);
       })
-
     }
   }
 
