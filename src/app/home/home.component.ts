@@ -6,18 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  addUser: boolean;
   constructor() { }
 
   ngOnInit() {
   }
-  addUserData() {
-    this.addUser = true;
-  }
-
-  closeModal(){
-    document.querySelector('.modal-backdrop').remove();
-    this.addUser = false;
-  }
-
 }
