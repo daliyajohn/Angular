@@ -10,29 +10,23 @@ import { first } from 'rxjs/operators';
 })
 export class UserFormComponent implements OnInit {
   @Input() userEditData;
+  @Input() popupLabel;
   userForm: FormGroup;
   submitted = false;
   @Output() cancelForm: EventEmitter<any> = new EventEmitter<any>();
   @Output() loadDataEvent: EventEmitter<any> = new EventEmitter<any>();
-  popupTitle: any;
-  popupButton: any;
 
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) { 
-  }
-
-  ngOnInit() { 
-    this.popupTitle = 'Add';
-    this.popupButton = 'Add';
     this.userForm = this.formBuilder.group({
       name: ['', Validators.required],
       salary: ['', Validators.required],
       age: ['', Validators.required],
       id: ['']
     });
+  }
 
+  ngOnInit() { 
     if (this.userEditData && this.userEditData.id) {
-      this.popupTitle = 'Edit';
-      this.popupButton = 'Update';
       this.userForm.get('name').setValue(this.userEditData.employee_name ? this.userEditData.employee_name : '');
       this.userForm.get('salary').setValue(this.userEditData.employee_salary ? this.userEditData.employee_salary : '');
       this.userForm.get('age').setValue(this.userEditData.employee_age ? this.userEditData.employee_age : '');
@@ -53,6 +47,7 @@ export class UserFormComponent implements OnInit {
           x.className = "show";
           setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
+        this.userForm.reset();
       },
       error => {
         alert(error);
@@ -68,7 +63,8 @@ export class UserFormComponent implements OnInit {
       this.homeService.updateUserData(dataFormat).subscribe(r => {
         this.cancelForm.emit(true);
         this.loadDataEvent.emit(true);
-      })
+      });
+      this.userForm.reset();
     }
   }
 

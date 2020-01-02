@@ -15,6 +15,8 @@ export class UserListComponent implements OnInit {
   editUser: boolean;
   users:any;
   showLoader: boolean;
+  resetData: any;
+  popupTitle: string;
 
   constructor( private router: Router, private homeService: HomeService) { }
 
@@ -34,10 +36,12 @@ export class UserListComponent implements OnInit {
   editUserData(UserId) {
     this.userDetails = UserId;
     this.editUser = true;
+    this.popupTitle = 'Edit';
   }
 
   addUserData() {
     this.editUser = true;
+    this.popupTitle = 'Add';
   }
 
   // delete user data
