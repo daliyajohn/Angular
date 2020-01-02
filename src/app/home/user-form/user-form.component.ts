@@ -34,6 +34,8 @@ export class UserFormComponent implements OnInit {
     }
   }
 
+  get f() { return this.userForm.controls; }
+
   // submit data
   onSubmit(userData) {
     this.submitted = true;
@@ -47,7 +49,6 @@ export class UserFormComponent implements OnInit {
           x.className = "show";
           setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
-        this.userForm.reset();
       },
       error => {
         alert(error);
@@ -64,7 +65,6 @@ export class UserFormComponent implements OnInit {
         this.cancelForm.emit(true);
         this.loadDataEvent.emit(true);
       });
-      this.userForm.reset();
     }
   }
 

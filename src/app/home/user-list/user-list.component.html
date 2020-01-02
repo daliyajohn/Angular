@@ -49,7 +49,7 @@
             <app-user-form (loadDataEvent)="loadData($event)" [popupLabel]="popupTitle" (cancelForm)="closeModal($event)" ></app-user-form>
           </ng-container>
           <ng-container *ngIf="popupTitle == 'Edit'">
-            <app-user-form [userEditData]="userDetails"  (loadDataEvent)="loadData($event)" (cancelForm)="closeModal($event)" ></app-user-form>
+            <app-user-form [userEditData]="userDetails" [popupLabel]="popupTitle"  (loadDataEvent)="loadData($event)" (cancelForm)="closeModal($event)" ></app-user-form>
           </ng-container>
         </div>
       </div>
@@ -57,4 +57,4 @@
   </div>
 <!-- user form modal end -->
 
-<button type="button" class="btn btn-primary add-button" did="close-popup"  data-toggle="modal" data-target="#userModal"  (click)="addUserData()"><span>+</span></button>
+<button type="button" class="btn btn-primary add-button" id="close-popup"  data-toggle="modal" data-target="#userModal"  (click)="addUserData()"><span>+</span></button>
