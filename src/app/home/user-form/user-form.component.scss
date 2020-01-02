@@ -8,4 +8,8 @@ form {
     ::placeholder {
         font-size: 12px;
     }
+    .invalid-feedback {
+        display: block;
+        margin-top: -15px;
+    }
 }

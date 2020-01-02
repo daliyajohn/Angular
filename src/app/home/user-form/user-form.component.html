@@ -6,7 +6,7 @@
   </div>
 
   <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-      <div *ngIf="f.name.errors.required">Title is required</div>
+      <div *ngIf="f.name.errors.required">Name required</div>
   </div>
 
   <div class="form-group">
@@ -15,7 +15,7 @@
   </div>
 
   <div *ngIf="submitted && f.salary.errors" class="invalid-feedback">
-      <div *ngIf="f.salary.errors.required">Title is required</div>
+      <div *ngIf="f.salary.errors.required">Salary required</div>
   </div> 
 
   <div class="form-group">
@@ -24,7 +24,7 @@
   </div>
 
   <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
-      <div *ngIf="f.age.errors.required">Title is required</div>
+      <div *ngIf="f.age.errors.required">Age required</div>
   </div>
 
 <button type="submit" class="btn btn-primary float-right">Save</button>

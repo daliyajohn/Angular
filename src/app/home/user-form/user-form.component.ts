@@ -39,6 +39,9 @@ export class UserFormComponent implements OnInit {
   // submit data
   onSubmit(userData) {
     this.submitted = true;
+    Object.keys(this.userForm.controls).forEach(c => {
+      this.userForm.get(c).markAsTouched();
+    });
     if (this.userForm.valid  && !userData.id) {
       this.homeService.createUser(userData).subscribe(data => {
         this.cancelForm.emit(false);
